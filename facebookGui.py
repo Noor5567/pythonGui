@@ -3,6 +3,7 @@ from time import *
 from random import randint 
 from PIL import Image
 from pytesseract import pytesseract
+import datetime
 #Define path to tessaract.exe
 path_to_tesseract = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 #Point tessaract_cmd to tessaract.exe
@@ -11,20 +12,31 @@ message=["Hi","Hello","Aloha"]
 message2=["How Are You ?","Are You Available Today ?","Cannot Talk Right Now !"]
 name="noor barakat"
 email="ahmadsel218@gmail.com"
-password="0795848996"
+password="555"
+gmailLink="https://accounts.google.com/"
 gui.alert("HI",timeout=2000)
 gui.hotkey('win')
 sleep(2)
 gui.write("chrome",interval=0.20)
 gui.press('enter')
-sleep(1)
-#screenBigImage=gui.locateCenterOnScreen('screen_big.jpg',confidence=0.75)
-#print(screenBigImage) x=1853, y=25
-
+sleep(2)
+findChormeMes=gui.locateAllOnScreen('imgs\\chromeMes.jpg',confidence=0.75)
+if(findChormeMes is not None):
+    gui.moveTo(572,850)
+    sleep(2)
+    gui.click(button='left')
+    sleep(30)
 ## START TO FIND PLUS IN BROWSER
 findPlusImage=gui.locateCenterOnScreen('imgs\\plus.jpg',confidence=0.75)
+findPlusImage2=gui.locateCenterOnScreen('imgs\\plusDark.jpg',confidence=0.75)
 if (findPlusImage is not None):
     gui.click(findPlusImage[0],findPlusImage[1])
+    gui.write("https://www.facebook.com/",interval=0.20)
+    sleep(2)
+    gui.press('enter')
+    sleep(10)
+elif(findPlusImage2 is not None):
+    gui.click(findPlusImage2[0],findPlusImage2[1])
     gui.write("https://www.facebook.com/",interval=0.20)
     sleep(2)
     gui.press('enter')
@@ -37,11 +49,11 @@ FindLogin=gui.locateCenterOnScreen('imgs\\login.jpg',confidence=0.75)
 if(FindHomePage and FindEmail and FindPass and FindLogin is not None):
     gui.click(FindEmail[0],FindEmail[1])
     sleep(2)
-    gui.write(email)
+    gui.write(email,interval=0.20)
     sleep(3)
     gui.click(FindPass[0],FindPass[1])
-    sleep(10)
-    gui.write(password)
+    sleep(3)
+    gui.write(password,interval=0.20)
     sleep(2)
     gui.click(FindLogin[0],FindLogin[1])
     sleep(10)
@@ -70,7 +82,7 @@ if(RestPass is not None):
         ConImg=gui.locateCenterOnScreen("imgs\\continue.jpg",confidence=0.75)
         gui.click(ConImg[0],ConImg[1])
         sleep(20)
-        SecPage=gui.locateCenterOnScreen("imgs\\ecurityCodePage.jpg",confidence=0.75)
+        SecPage=gui.locateCenterOnScreen("imgs\\securityCodePage.jpg",confidence=0.75)
         if(SecPage is not None):
             enterCode=gui.locateCenterOnScreen("imgs\\enterCode.jpg",confidence=0.75)
             gui.click(enterCode[0],enterCode[1])
@@ -79,7 +91,34 @@ if(RestPass is not None):
             gui.moveTo(x=846, y=366)
             gui.click(button='left', clicks=2, interval=0.25)
             gui.press('backspace')
-            sleep(5) ## END FORGET PASSWORD
+            sleep(5) 
+findPlusImage=gui.locateCenterOnScreen('imgs\\plus.jpg',confidence=0.75)
+if (findPlusImage is not None):
+    gui.click(findPlusImage[0],findPlusImage[1])
+    gui.write(gmailLink,interval=0.20)
+    sleep(2)
+    gui.press('enter')
+    sleep(10)
+chooseAcc=gui.locateCenterOnScreen("imgs\\chooseAcc.jpg",confidence=0.75)
+if(chooseAcc is not None):
+    findEmail=gui.locateCenterOnScreen("imgs\\findEmail.jpg",confidence=0.75)
+    if(findEmail is not None):
+        gui.click(findEmail[0],findEmail[1])
+        sleep(2)
+        gui.press('backspace')
+        gui.press('backspace')
+        sleep(2)
+        gui.write(password)
+        sleep(2)
+        Nextimage=gui.locateCenterOnScreen("imgs\\Next.jpg",confidence=0.75)
+        if(Nextimage is not None):
+            gui.click(Nextimage[0],Nextimage[1])
+            sleep(2)
+            optionImage=gui.locateCenterOnScreen("imgs\\option.jpg",confidence=0.75)
+            if(optionImage is not None):
+                gui.click(optionImage[0],optionImage[1])
+                sleep(2)
+                
 ## START FIND MESSANGER BUTTON AND SEARCH FOR THE NAME
 findMessangerImage=gui.locateCenterOnScreen('imgs\\mes.jpg',confidence=0.75)
 if(findMessangerImage is not None):

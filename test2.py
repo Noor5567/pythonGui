@@ -25,5 +25,13 @@ if(SecPage is not None):
      gui.click(button='left', clicks=2, interval=0.25)
      gui.press('backspace')  """
 import pyautogui as gui
-pos=gui.position()
-print(pos)
+from time import * 
+def plus_function():
+    findPlusImage=gui.locateCenterOnScreen('imgs\\plus.jpg',confidence=0.75)
+    if (findPlusImage is not None):
+     gui.click(findPlusImage[0],findPlusImage[1])
+     gui.write("https://www.facebook.com/",interval=0.20)
+     sleep(2)
+     gui.press('enter')
+     sleep(10) ## END TO FIND PLUS IN BROWSER
+plus_function()
