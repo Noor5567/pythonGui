@@ -11,6 +11,11 @@ from pytesseract import pytesseract
 import pyautogui as gui
 from time import * 
 import datetime
+import string 
+#Define path to tessaract.exe
+path_to_tesseract = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+#Point tessaract_cmd to tessaract.exe
+pytesseract.tesseract_cmd = path_to_tesseract
  #Define path to tessaract.exe
 #path_to_tesseract = r'C: \\Program Files \\Tesseract-OCR \\tesseract.exe'
  #Point tessaract_cmd to tessaract.exe
@@ -24,9 +29,21 @@ import datetime
 #pos=gui.position()
 #print(pos)
 #Define path to tessaract.exe
-pos=gui.position()
-print(pos)
-
+#gui.hotkey('win')
+#sleep(2)
+#fireFox=gui.write("firefox",interval=0.20)
+#logoutImage= Image.open('imgs\\firefox.png')
+#logoutText = pytesseract.image_to_string(logoutImage,lang="eng")
+#logoutText2=logoutText.strip()
+#if "Firefox" in logoutText:
+FindHomePage=gui.locateAllOnScreen('imgs\\HomaPage.jpg',confidence=0.75)
+FindEmail=gui.locateCenterOnScreen('imgs\\enterEmail.jpg',confidence=0.75)  #x=1175, y=266
+FindPass=gui.locateAllOnScreen('imgs\\enterPassword.jpg',confidence=0.75)  #x=1135, y=341
+FindLogin=gui.locateCenterOnScreen('imgs\\login.jpg',confidence=0.75)
+print(FindHomePage," ",FindEmail," ",FindPass," ",FindLogin)
+    
+#gui.press('enter')
+#sleep(2)
 #gui.moveTo(x=952, y=619)
 #sleep(2)
 #gui.click(button="left")
