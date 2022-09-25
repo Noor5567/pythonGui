@@ -30,13 +30,14 @@ if (fireFoxIcon is not None):
     gui.write("https://www.facebook.com/",interval=0.20)
     sleep(2)
     gui.press('enter')
-    sleep(10)
+    sleep(3)
+    gui.click(button='left')
  elif(findPlusImage2 is not None):
     gui.click(findPlusImage2[0],findPlusImage2[1])
     gui.write("https://www.facebook.com/",interval=0.20)
     sleep(2)
     gui.press('enter')
-    sleep(5) 
+    sleep(3) 
     gui.click(button='left')## END TO FIND PLUS IN BROWSER
 ## START FIND HOME AND EMAIL AND PASSWORD AND LOGIN IMAGES
  FindHomePage=gui.locateAllOnScreen('imgs\\HomaPage.jpg',confidence=0.75)
@@ -44,6 +45,8 @@ if (fireFoxIcon is not None):
  FindPass=gui.locateAllOnScreen('imgs\\enterPassword.jpg',confidence=0.75)  #x=1135, y=341
  FindLogin=gui.locateCenterOnScreen('imgs\\login.jpg',confidence=0.75)
  if(FindHomePage and FindEmail and FindPass and FindLogin is not None):
+    gui.click(FindEmail[0],FindEmail[1])
+    sleep(2)
     gui.click(FindEmail[0],FindEmail[1])
     sleep(2)
     gui.write(email,interval=0.20)
