@@ -29,17 +29,24 @@ pytesseract.tesseract_cmd = path_to_tesseract
 #pos=gui.position()
 #print(pos)
 #Define path to tessaract.exe
-#gui.hotkey('win')
-#sleep(2)
-#fireFox=gui.write("firefox",interval=0.20)
+gui.hotkey('win')
+sleep(2)
+gui.write("firefox",interval=0.20)
+gui.press("enter")
+sleep(3)
+gui.write("https://www.facebook.com/",interval=0.20)
+gui.press("enter")
+sleep (5)
+gui.click(button='left')
+sleep(3)
 #logoutImage= Image.open('imgs\\firefox.png')
 #logoutText = pytesseract.image_to_string(logoutImage,lang="eng")
 #logoutText2=logoutText.strip()
 #if "Firefox" in logoutText:
 FindHomePage=gui.locateAllOnScreen('imgs\\HomaPage.jpg',confidence=0.75)
-FindEmail=gui.locateCenterOnScreen('imgs\\enterEmail.jpg',confidence=0.75)  #x=1175, y=266
+FindEmail=gui.locateAllOnScreen('imgs\\enterEmail.jpg',confidence=0.75)  #x=1175, y=266
 FindPass=gui.locateAllOnScreen('imgs\\enterPassword.jpg',confidence=0.75)  #x=1135, y=341
-FindLogin=gui.locateCenterOnScreen('imgs\\login.jpg',confidence=0.75)
+FindLogin=gui.locateAllOnScreen('imgs\\login.jpg',confidence=0.75)
 print(FindHomePage," ",FindEmail," ",FindPass," ",FindLogin)
     
 #gui.press('enter')
